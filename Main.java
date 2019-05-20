@@ -29,9 +29,7 @@ public class Main {
 		BufferedReader br = new BufferedReader(new FileReader("guategrafo.txt"));    
         StringBuilder sb = new StringBuilder();
         String line;
-       // Node<Association<String,String>> nuevoNodo;
-       // BinaryTree<Node<Association<String, String>>> bst = new BinaryTree<>(); //se crea nuevo arbol null
-
+       
         Scanner teclado = new Scanner(System.in);
 
         try {
@@ -39,39 +37,85 @@ public class Main {
                 String Departamento1;
                 String Departamento2;
                 String Distancia;
-                sb.append(line);
-                sb.append(System.lineSeparator()); 
-                line = line + " "; 
-                for(int i=1;i<line.length();i++){
+                int a = line.indexOf(" ");
+                int o = line.lastIndexOf(" ");
+               // System.out.println(a+" "+o);
+              
+                  Distancia =line.substring(o+1).trim();
+                  System.out.println(Distancia);
+                  Departamento2 =line.substring(o-a,o+1).trim();
+                  System.out.println(Departamento2);
+                  Departamento1 = line.substring(0,a+1).trim();
+                  System.out.println(Departamento1);
                     
-                    String iter = line.substring((i-1), i); 
-                    if(iter.equals(" "))
-                    {
-                        Departamento2 = line.substring(i, line.length()-1).toLowerCase(); 
-                        System.out.println(Departamento2);
-                        //obtengo la subcadena luego de " "
-                        Departamento1 = line.substring(0, i-1).toLowerCase(); 
-                        System.out.println(Departamento1);
-                        //se obtiene la subcadena antes de " " 
-                        //Distancia = line.substring(0, i-1).toLowerCase(); 
-                      //  nuevoNodo = new Node<>(palabraIngles, palabraEspanol); 
-                        //se crea el "nodo" que se pondrá en el tree
-                      //  bst.insert(nuevoNodo); 
-                        //se agrega el nodo al arbol
-                    }
-                }
+             
             }
-            System.out.println("------Imprimir Diccionario-----");
-            System.out.println("************IN ORDER*********");
-         //   bst.inorder();
+            System.out.println("**********************************");
+            System.out.println("-------GUATEMALA Y DISTANCIAS-----");
+            System.out.println("**********************************");
+            System.out.println("       Elija una opcion    ");
+            System.out.println("1. Buscar por ciudad");
+            System.out.println("2. Ver el centro del grafo y matriz");
+            System.out.println("3. Modificar grafo ");
+            System.out.println("4. Salir ");
+            System.out.println(" ");
+            int op = teclado.nextInt();
+			teclado.nextLine();
+			while (op !=5) {
+            if (op == 1){
+            	System.out.println("Ingrese la ciudad de origen");
+            	String ciudad1= teclado.nextLine();
+            	ciudad1.toLowerCase();
+            	System.out.println("Ingrese la ciudad de destino");
+            	String ciudad2= teclado.nextLine();
+            	ciudad2.toLowerCase();
+            }
+            if (op == 2) {
+            	System.out.println("La ciudad central del grafo es: " + "aqui va la impresion de la matriz");
+            }
+            if (op == 3) {
+            	System.out.println("Que desea modiciar?");
+            	System.out.println("1. Nueva ruta");
+                System.out.println("2. Eliminar ruta");
+                int op3 = teclado.nextInt();
+        		teclado.nextLine();
+                if (op3==1) {
+                	System.out.println("Ingrese la ciudad de partida");
+                    System.out.println("Ingrese la ciudad destino");
+                    System.out.println("Ingrese la distancia ");
+                    System.out.println(" ");
+                }
+                if (op3==2) {
+                	System.out.println("Ingrese la ciudad de partida");
+                    System.out.println("Ingrese la ciudad destino");
+                   
+                }
+                else {
+                	System.out.println("Ingerse una opcion del menu");
+                	op3 = teclado.nextInt();
+					teclado.nextLine();
+				}
+            }
+            if (op ==4) {
+            	System.out.println("Adios");
+            	break;
+            }
+            else {
+            	System.out.println("Ingrese una opción del menu");
+            	op = teclado.nextInt();
+				teclado.nextLine();
+			}   
+	}
+                
         }
         finally{
-            //br.close();
+            br.close();
         }
+
         
         //Traduccion del documento.
         
-     /*   File archivo = new File ("texto.txt");
+       File archivo = new File ("guategrafo.txt");
 
         FileReader fr = new FileReader (archivo);
         BufferedReader br1 = new BufferedReader(fr);
@@ -96,14 +140,13 @@ public class Main {
         String word;
         for(String p: palabras){
             word = p.toLowerCase();
-            resultado += bst.search(word) + " ";
+           // resultado += bst.search(word) + " ";
 
         }
 
         System.out.println("----------------------------------------");
-        System.out.println("***************TRADUCIR****************");
-        System.out.println(resultado);
-     */   
+        
+           
     }
 	}
 
